@@ -25,3 +25,46 @@ h1 {
 .post p {
     margin: 10px 0;
 }
+
+.add-form {
+    background-color: #FFF;
+    border: 1px solid #DDD;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+}
+
+.add-form label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.add-form input,
+.add-form textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #DDD;
+    border-radius: 4px;
+}
+
+.add-form button {
+    margin-top: 16px;
+    padding: 10px 20px;
+    background-color: #4F4F4F;
+    color: #FFF;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-form button:hover {
+    background-color: #333;
+}
+
+body a {
+    color: #4F4F4F;
+}
