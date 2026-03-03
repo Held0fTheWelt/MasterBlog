@@ -1,3 +1,4 @@
+"""Flask blog application: display, add, update, delete and like posts stored in JSON."""
 import json
 from pathlib import Path
 
@@ -31,12 +32,14 @@ def fetch_post_by_id(post_id):
 
 @app.route('/')
 def index():
+    """Render the home page with all blog posts."""
     blog_posts = load_blog_posts()
     return render_template('index.html', posts=blog_posts)
 
 
 @app.route('/add', methods=['GET', 'POST'])
 def add():
+    """Show add form (GET) or create a new post (POST) and redirect to index."""
     if request.method == 'POST':
         posts = load_blog_posts()
         new_id = max((p["id"] for p in posts), default=0) + 1
@@ -55,6 +58,7 @@ def add():
 
 @app.route('/delete/<int:post_id>')
 def delete(post_id):
+    """Remove the post with the given id and redirect to index."""
     posts = load_blog_posts()
     posts = [p for p in posts if p["id"] != post_id]
     save_blog_posts(posts)
@@ -63,6 +67,7 @@ def delete(post_id):
 
 @app.route('/update/<int:post_id>', methods=['GET', 'POST'])
 def update(post_id):
+    """Show update form (GET) or save changes (POST) for the given post."""
     post = fetch_post_by_id(post_id)
     if post is None:
         return "Post not found", 404
@@ -81,11 +86,12 @@ def update(post_id):
     return render_template('update.html', post=post)
 
 
-@app.route('/like/<int:id>')
-def like(id):
+@app.route('/like/<int:post_id>')
+def like(post_id):
+    """Increment the like count for the given post and redirect to index."""
     posts = load_blog_posts()
     for p in posts:
-        if p["id"] == id:
+        if p["id"] == post_id:
             p["likes"] = p.get("likes", 0) + 1
             break
     save_blog_posts(posts)
