@@ -26,6 +26,22 @@ h1 {
     margin: 10px 0;
 }
 
+.btn-update {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 8px;
+    padding: 6px 12px;
+    background-color: #4F4F4F;
+    color: #FFF;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-update:hover {
+    background-color: #333;
+}
+
 .btn-delete {
     display: inline-block;
     margin-top: 10px;
