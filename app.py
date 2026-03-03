@@ -45,6 +45,7 @@ def add():
             "author": request.form.get("author", "").strip(),
             "title": request.form.get("title", "").strip(),
             "content": request.form.get("content", "").strip(),
+            "likes": 0,
         }
         posts.append(new_post)
         save_blog_posts(posts)
@@ -78,6 +79,17 @@ def update(post_id):
         return redirect(url_for('index'))
 
     return render_template('update.html', post=post)
+
+
+@app.route('/like/<int:id>')
+def like(id):
+    posts = load_blog_posts()
+    for p in posts:
+        if p["id"] == id:
+            p["likes"] = p.get("likes", 0) + 1
+            break
+    save_blog_posts(posts)
+    return redirect(url_for('index'))
 
 
 if __name__ == '__main__':

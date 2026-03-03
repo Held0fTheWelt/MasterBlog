@@ -26,6 +26,22 @@ h1 {
     margin: 10px 0;
 }
 
+.btn-like {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 8px;
+    padding: 6px 12px;
+    background-color: #3a7bd5;
+    color: #FFF;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-like:hover {
+    background-color: #2868c7;
+}
+
 .btn-update {
     display: inline-block;
     margin-top: 10px;
